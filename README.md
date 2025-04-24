@@ -104,3 +104,20 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
 
 streamlit run app.py
+
+
+docker pull chrisiancuya/dl2docker:latest
+docker run -p 8501:8501 chrisiancuya/dl2docker:latest
+
+
+docker build -t dl2docker .
+docker run dl2docker
+docker run -p 8501:8501 --name dl2docker dl2docker
+docker stop dl2docker && docker rm dl2docker
+docker stop dl2docker
+docker rm dl2docker
+docker run -p 8501:8501 --name dl2docker dl2docker
+docker images
+docker tag dl2docker:latest chrisiancuya/dl2docker:latest
+docker login
+docker push chrisiancuya/dl2docker:latest
